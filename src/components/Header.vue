@@ -17,9 +17,29 @@
 </script>
 
 <style lang="scss">
+  @import "../../src/app/scss/styles.scss";
+
   .header {
     $this: &;
 
-    // ok
+    background-color: $white;
+
+    &__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__title {
+      font-size: 16px;
+      color: $veryDarkBlue;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    &__darkswitch {
+      font-weight: 600;
+      color: $veryDarkBlue;
+      font-family: 'Nunito Sans', sans-serif;
+    }
   }
 </style>
