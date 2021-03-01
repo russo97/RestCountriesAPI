@@ -1,15 +1,21 @@
 <template>
   <div id="app">
-    hello world
+    <Header />
   </div>
 </template>
 
 <script>
+  import Header from './components/Header';
+
   export default {
-    name: 'App'
+    name: 'App',
+
+    components: {
+      Header
+    }
   }
 </script>
 
 <style lang="scss">
-  @import "../src/app/scss/reset.scss";
+  @import "../src/app/scss/styles.scss";
 </style>
