@@ -4,7 +4,8 @@
       <h3 class="header__title">Where in the world?</h3>
 
       <span class="header__darkswitch">
-        Dark Mode
+        <i class="far fa-moon"></i>
+        <span class="header__darktext">Dark Mode</span>
       </span>
     </div>
   </header>
@@ -31,15 +32,30 @@
     }
 
     &__title {
-      font-size: 16px;
+      font-size: 1rem;
       color: $veryDarkBlue;
       font-family: 'Nunito Sans', sans-serif;
     }
 
     &__darkswitch {
       font-weight: 600;
+      text-align: center;
       color: $veryDarkBlue;
       font-family: 'Nunito Sans', sans-serif;
+
+      @include flex {
+        @extend %flexJC_SB-AI_C;
+
+        @include breakpoint-down (mobile) {
+          flex-direction: column;
+        }
+      }
+    }
+
+    &__darktext {
+      @include breakpoint-up (mobile) {
+        margin-left: .4375rem;
+      }
     }
   }
 </style>

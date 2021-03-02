@@ -5,3 +5,18 @@ body {
 .container {
   padding: 45px 30px;
 }
+
+@mixin flex {
+  display: flex;
+
+  @content;
+}
+
+%flexJC_SB-AI_C {
+  align-items: center;
+  justify-content: space-between;
+}
+
+%flexFD_C {
+  flex-direction: column;
+}
