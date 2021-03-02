@@ -6,7 +6,7 @@
       <span class="header__darkswitch">
         <i
           class="fa-moon"
-          :class="[true ? 'far' : 'fas']">
+          :class="[isDarkMode ? 'far' : 'fas']">
         </i>
         <span class="header__darktext">Dark Mode</span>
       </span>
@@ -15,8 +15,14 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
   export default {
-    name: 'Header'
+    name: 'Header',
+
+    computed: mapGetters([
+      'isDarkMode'
+    ])
   }
 </script>
 
@@ -41,6 +47,7 @@
 
     &__darkswitch {
       padding: 5px;
+      cursor: pointer;
       font-weight: 600;
       text-align: center;
       color: $veryDarkBlue;
