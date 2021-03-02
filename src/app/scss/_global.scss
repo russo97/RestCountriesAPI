@@ -1,9 +1,12 @@
 
 body {
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .container {
-  padding: 45px 30px;
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 2.8125rem 1.875rem;
 }
 
 @mixin flex {

@@ -4,7 +4,10 @@
       <h3 class="header__title">Where in the world?</h3>
 
       <span class="header__darkswitch">
-        <i class="far fa-moon"></i>
+        <i
+          class="fa-moon"
+          :class="[true ? 'far' : 'fas']">
+        </i>
         <span class="header__darktext">Dark Mode</span>
       </span>
     </div>
@@ -34,14 +37,17 @@
     &__title {
       font-size: 1rem;
       color: $veryDarkBlue;
-      font-family: 'Nunito Sans', sans-serif;
     }
 
     &__darkswitch {
+      padding: 5px;
       font-weight: 600;
       text-align: center;
       color: $veryDarkBlue;
-      font-family: 'Nunito Sans', sans-serif;
+
+      &:hover {
+        background-color: $veryLightGray;
+      }
 
       @include flex {
         @extend %flexJC_SB-AI_C;
