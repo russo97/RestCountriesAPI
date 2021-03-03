@@ -1,28 +1,46 @@
 <template>
-  <header class="header">
+  <header
+    class="header"
+    :class="{ dark: isDarkMode }">
     <div class="header__container container">
       <h3 class="header__title">Where in the world?</h3>
 
       <span class="header__darkswitch">
         <i
           class="fa-moon"
-          :class="[isDarkMode ? 'far' : 'fas']">
+          :class="[isDarkMode ? 'fas' : 'far']">
         </i>
-        <span class="header__darktext">Dark Mode</span>
+        <span
+          class="header__darktext"
+          @click="toggleDarkTheme">
+          Dark Mode
+        </span>
       </span>
     </div>
   </header>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapActions, mapGetters, mapState } from 'vuex';
 
   export default {
     name: 'Header',
 
-    computed: mapGetters([
-      'isDarkMode'
-    ])
+    methods: {
+      ...mapActions('Countries', [
+        'toggleDarkTheme'
+      ])
+    },
+
+    computed: {
+      ...mapState('Countries', {
+        darkMode: state => state.darkMode
+      }),
+
+      ...mapGetters('Countries', [
+        'isDarkMode'
+      ])
+    }
   }
 </script>
 
