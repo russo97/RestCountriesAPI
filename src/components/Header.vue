@@ -51,27 +51,40 @@
     $this: &;
 
     background-color: $white;
+    transition: background-color .2s ease-in-out;
 
     &__container {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      @include breakpoint-up (medium) {
+        max-height: 80px;
+      }
     }
 
     &__title {
       font-size: 1rem;
       color: $veryDarkBlue;
+
+      @include breakpoint-up (medium) {
+        font-size: 1.5rem;
+      }
+      
+      @include breakpoint-up (desktop) {
+        font-size: 1.7rem;
+      }
     }
 
     &__darkswitch {
       padding: 5px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 800;
       text-align: center;
       color: $veryDarkBlue;
 
       &:hover {
-        background-color: $veryLightGray;
+        // background-color: $veryLightGray;
       }
 
       @include flex {
@@ -86,6 +99,16 @@
     &__darktext {
       @include breakpoint-up (mobile) {
         margin-left: .4375rem;
+      }
+    }
+
+    &.dark {
+      background-color: $darkBlue;
+      box-shadow: 0 5px 3px #aaa;
+
+      #{$this}__title,
+      #{$this}__darkswitch {
+        color: $white;
       }
     }
   }
