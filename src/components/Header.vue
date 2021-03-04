@@ -5,14 +5,9 @@
     <div class="header__container container">
       <h3 class="header__title">Where in the world?</h3>
 
-      <span class="header__darkswitch">
-        <i
-          class="fa-moon"
-          :class="[isDarkMode ? 'fas' : 'far']">
-        </i>
-        <span
-          class="header__darktext"
-          @click="toggleDarkTheme">
+      <span class="header__darkswitch" @click="toggleDarkTheme">
+        <i class="fa-moon" :class="[isDarkMode ? 'fas' : 'far']"></i>
+        <span class="header__darktext">
           Dark Mode
         </span>
       </span>
@@ -21,7 +16,7 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters, mapState } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
 
   export default {
     name: 'Header',
@@ -33,10 +28,6 @@
     },
 
     computed: {
-      ...mapState('Countries', {
-        darkMode: state => state.darkMode
-      }),
-
       ...mapGetters('Countries', [
         'isDarkMode'
       ])
@@ -51,7 +42,7 @@
     $this: &;
 
     background-color: $white;
-    transition: background-color .2s ease-in-out;
+    transition: background-color .3s ease-in-out;
 
     &__container {
       display: flex;
@@ -59,7 +50,7 @@
       justify-content: space-between;
 
       @include breakpoint-up (medium) {
-        max-height: 80px;
+        max-height: 5rem;
       }
     }
 
@@ -77,15 +68,11 @@
     }
 
     &__darkswitch {
-      padding: 5px;
       cursor: pointer;
-      font-weight: 800;
+      font-weight: 600;
+      padding: .3125rem;
       text-align: center;
       color: $veryDarkBlue;
-
-      &:hover {
-        // background-color: $veryLightGray;
-      }
 
       @include flex {
         @extend %flexJC_SB-AI_C;
@@ -102,9 +89,10 @@
       }
     }
 
+    // just apllied colors for the dark mode
     &.dark {
       background-color: $darkBlue;
-      box-shadow: 0 5px 3px #aaa;
+      box-shadow: 0 .3125rem .1875rem #aaa;
 
       #{$this}__title,
       #{$this}__darkswitch {
