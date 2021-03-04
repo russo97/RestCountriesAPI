@@ -1,4 +1,5 @@
 
 export default {
-  darkMode: false
+  darkMode: false,
+  sectionId: 'countriesList'
 };
