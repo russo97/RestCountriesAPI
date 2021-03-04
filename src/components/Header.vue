@@ -43,6 +43,7 @@
 
     background-color: $white;
     transition: all .3s ease-in-out;
+    box-shadow: 0 .3125rem .1875rem $white;
 
     &__container {
       display: flex;
@@ -92,7 +93,7 @@
     // just apllied colors for the dark mode
     &.dark {
       background-color: $darkBlue;
-      box-shadow: 0 .3125rem .1875rem #aaa;
+      box-shadow: 0 1.5rem 2.5rem $veryDarkBlue;
 
       #{$this}__title,
       #{$this}__darkswitch {

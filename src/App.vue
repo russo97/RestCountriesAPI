@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ dark: darkMode }">
     <Header />
 
     <transition-group name="route-change" tag="section" :id="sectionId">
@@ -18,6 +18,7 @@
 
     computed: {
       ...mapState('Countries', [
+        'darkMode',
         'sectionId'
       ])
     },
@@ -30,4 +31,15 @@
 
 <style lang="scss">
   @import "../src/app/scss/styles.scss";
+
+  div#app {
+    $this: &;
+
+    background-color: $white;
+    transition: all .3s ease-in-out;
+
+    &.dark {
+      background-color: $veryDarkBlue;
+    }
+  }
 </style>
