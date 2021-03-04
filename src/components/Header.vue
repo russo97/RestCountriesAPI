@@ -42,7 +42,7 @@
     $this: &;
 
     background-color: $white;
-    transition: background-color .3s ease-in-out;
+    transition: all .3s ease-in-out;
 
     &__container {
       display: flex;
