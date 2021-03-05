@@ -5,7 +5,10 @@
       <input type="text" class="filterarea__search__input" placeholder="Search for a country..." />
     </div>
 
-    <div class="filterarea__filter">
+    <div
+      class="filterarea__filter"
+      :class="{ showRegions }"
+      @click="showRegionsToggle">
       <span class="filterarea__filter__label">
         Filter by Region
       </span>
@@ -14,11 +17,11 @@
       <div class="filterarea__filter__regions">
         <ul class="filterarea__filter__regions__list">
           <li
-            class="filterarea__filter__regions__list__item"
             :key="region"
-            v-for="region in regionList">
-              {{ region }}
-            </li>
+            v-for="region in regionList"
+            class="filterarea__filter__regions__list__item">
+            {{ region }}
+          </li>
         </ul>
       </div>
     </div>
@@ -30,6 +33,18 @@
 
   export default {
     name: "FilterArea",
+
+    data () {
+      return {
+        showRegions: true
+      };
+    },
+
+    methods: {
+      showRegionsToggle () {
+        this.showRegions = !this.showRegions;
+      }
+    },
 
     computed: {
       ...mapState('Countries', [
@@ -145,11 +160,12 @@
         height: auto;
         left: 0px;
         top: 100%;
-        margin-top: 5px;
+        margin-top: -25px;
         position: absolute;
         background: $white;
         padding: 15px 30px;
         border-radius: inherit;
+        pointer-events: none;
 
         &__list {
           @include flex {
@@ -162,7 +178,21 @@
             font-size: 1.1rem;
             color: $veryDarkBlue;
             text-transform: capitalize;
+
+            &:hover {
+              padding-left: 10px;
+            }
           }
+        }
+      }
+
+      &.showRegions {
+        .fas {
+          transform: rotate(0deg);
+        }
+
+        #{$this}__filter__regions {
+          margin-top: 5px;
         }
       }
     }
