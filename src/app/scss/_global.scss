@@ -1,12 +1,18 @@
 
-body {
+body,
+input,
+button {
   font-family: 'Nunito Sans', sans-serif;
 }
 
 .container {
   margin: 0 auto;
   max-width: 80rem;
-  padding: 2.8125rem 1.875rem;
+  padding: 3.125rem 2rem;
+
+  @include breakpoint-up (medium) {
+    padding: 2.8125rem 1.875rem;
+  }
 }
 
 @mixin flex {
