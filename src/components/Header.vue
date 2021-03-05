@@ -58,6 +58,7 @@
     &__title {
       font-size: 1rem;
       color: $veryDarkBlue;
+      transition: all .3s ease-in-out;
 
       @include breakpoint-up (medium) {
         font-size: 1.5rem;
@@ -74,6 +75,7 @@
       padding: .3125rem;
       text-align: center;
       color: $veryDarkBlue;
+      transition: all .3s ease-in-out;
 
       @include flex {
         @extend %flexJC_SB-AI_C;
