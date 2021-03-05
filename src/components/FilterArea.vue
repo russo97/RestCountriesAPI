@@ -160,6 +160,7 @@
         height: auto;
         left: 0px;
         top: 100%;
+        @include fadeOut;
         margin-top: -25px;
         position: absolute;
         background: $white;
@@ -192,6 +193,7 @@
         }
 
         #{$this}__filter__regions {
+          @include fadeIn;
           margin-top: 5px;
         }
       }

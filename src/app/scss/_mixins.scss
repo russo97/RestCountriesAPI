@@ -25,3 +25,10 @@ $breakpoints-down: (
 }
 
 
+@mixin fadeOut {
+  animation: fadeOut .3s forwards;
+}
+
+@mixin fadeIn {
+  animation: fadeIn .3s forwards;
+}
