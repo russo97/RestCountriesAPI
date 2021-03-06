@@ -5,13 +5,11 @@
       <input type="text" class="filterarea__search__input" placeholder="Search for a country..." />
     </div>
 
-    <div
-      class="filterarea__filter"
-      :class="{ showRegions }"
-      @click="showRegionsToggle">
+    <div class="filterarea__filter" :class="{ showRegions }" @click="showRegionsToggle">
       <span class="filterarea__filter__label">
         Filter by Region
       </span>
+
       <i class="fas fa-chevron-down"></i>
 
       <div class="filterarea__filter__regions">
