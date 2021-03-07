@@ -17,8 +17,10 @@
           <li
             :key="region"
             v-for="region in regionList"
+            @click="setCurrentRegion(region)"
             class="filterarea__filter__regions__list__item">
             {{ region }}
+            <i v-if="regionSelected && currentRegion == region" class="fas fa-check"></i>
           </li>
         </ul>
       </div>
@@ -27,7 +29,7 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex';
+  import { mapActions, mapGetters, mapState } from 'vuex';
 
   export default {
     name: "FilterArea",
@@ -41,13 +43,22 @@
     methods: {
       showRegionsToggle () {
         this.showRegions = !this.showRegions;
-      }
+      },
+
+      ...mapActions('Countries', [
+        'setCurrentRegion'
+      ])
     },
 
     computed: {
       ...mapState('Countries', [
         'darkMode',
-        'regionList'
+        'regionList',
+        'currentRegion'
+      ]),
+
+      ...mapGetters('Countries', [
+        'regionSelected'
       ])
     }
   }
@@ -168,7 +179,6 @@
 
         &__list {
           @include flex {
-            // padding: .125rem 0;
             flex-direction: column;
           }
 
