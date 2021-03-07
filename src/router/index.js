@@ -3,12 +3,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import FilterArea from '../components/FilterArea';
+import CountriesList from '../components/CountriesList';
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: FilterArea }
+  { path: '/', component: CountriesList }
 ];
 
 export default new VueRouter({
