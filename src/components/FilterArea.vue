@@ -147,7 +147,7 @@
         max-width: 16.25rem;
       }
 
-      .fas {
+      & > .fas {
         color: $veryDarkBlue;
         transform: rotate(180deg);
       }
@@ -170,6 +170,7 @@
         top: 100%;
         left: 0rem;
         @include fadeOut;
+        overflow: hidden;
         position: absolute;
         background: $white;
         pointer-events: none;
@@ -183,13 +184,18 @@
           }
 
           &__item {
+            @include flex {
+              align-items: center;
+              justify-content: space-between;
+            }
+
             font-weight: 600;
             font-size: 1.1rem;
             color: $veryDarkBlue;
             pointer-events: all;
             text-transform: capitalize;
             cursor: pointer !important;
-            padding: .625rem 0 .625rem 2rem;
+            padding: .625rem 1.8rem .625rem 2rem;
             background-color: $veryLightGray;
             transition: all .3s ease-in-out;
 
@@ -211,6 +217,7 @@
 
         #{$this}__filter__regions {
           @include fadeIn;
+          pointer-events: all;
           margin-top: .3125rem;
         }
       }
