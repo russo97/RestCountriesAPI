@@ -34,7 +34,7 @@
 
     data () {
       return {
-        showRegions: true
+        showRegions: !1
       };
     },
 
@@ -72,8 +72,8 @@
     &__search,
     &__filter {
       position: relative;
-      padding: 20px 15px;
-      border-radius: 5px;
+      border-radius: .3125rem;
+      padding: 1.25rem .9375rem;
 
       @include flex {
         align-items: center;
@@ -85,13 +85,13 @@
       }
 
       @include breakpoint-up (desktop) {
-        max-height: 52px;
+        max-height: 3.25rem;
       }
     }
 
     &__search {
       width: 100%;
-      max-width: 688px;
+      max-width: 43rem;
       color: $darkGray;
       background-color: $white;
       box-shadow: 0 1.5rem 2.5rem transparent;
@@ -109,8 +109,8 @@
         border: none;
         font-weight: 600;
         color: $darkGray;
-        padding: 5px 10px;
         font-size: 1.2rem;
+        padding: .3125rem .625rem;
         background-color: transparent;
 
         @include breakpoint-up (desktop) {
@@ -127,13 +127,13 @@
     &__filter {
       width: 100%;
       cursor: pointer;
-      max-width: 400px;
-      margin-top: 50px;
+      max-width: 25rem;
+      margin-top: 3.125rem;
       background-color: $white;
 
       @include breakpoint-up (desktop) {
         margin-top: 0;
-        max-width: 260px;
+        max-width: 16.25rem;
       }
 
       .fas {
@@ -144,9 +144,9 @@
       &__label {
         width: 80%;
         font-weight: 600;
-        padding: 5px 10px;
         font-size: 1.2rem;
         color: $veryDarkBlue;
+        padding: .3125rem .625rem;
 
         @include breakpoint-up (desktop) {
           font-size: 1rem;
@@ -156,15 +156,15 @@
       &__regions {
         width: 100%;
         height: auto;
-        left: 0px;
         top: 100%;
+        left: 0rem;
         @include fadeOut;
-        margin-top: -25px;
         position: absolute;
         background: $white;
-        padding: 15px 30px;
+        margin-top: -1.5625rem;
         border-radius: inherit;
         pointer-events: none;
+        padding: .9375rem 1.875rem;
 
         &__list {
           @include flex {
@@ -172,14 +172,14 @@
           }
 
           &__item {
-            padding: 5px 5px;
+            padding: .3125rem;
             font-weight: 600;
             font-size: 1.1rem;
             color: $veryDarkBlue;
             text-transform: capitalize;
 
             &:hover {
-              padding-left: 10px;
+              padding-left: .625rem;
             }
           }
         }
@@ -192,7 +192,7 @@
 
         #{$this}__filter__regions {
           @include fadeIn;
-          margin-top: 5px;
+          margin-top: .3125rem;
         }
       }
     }
