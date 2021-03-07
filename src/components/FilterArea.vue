@@ -161,25 +161,34 @@
         @include fadeOut;
         position: absolute;
         background: $white;
+        pointer-events: none;
         margin-top: -1.5625rem;
         border-radius: inherit;
-        pointer-events: none;
-        padding: .9375rem 1.875rem;
+        box-shadow: 0 1px 8px 2px #aaa;
 
         &__list {
           @include flex {
+            // padding: .125rem 0;
             flex-direction: column;
           }
 
           &__item {
-            padding: .3125rem;
             font-weight: 600;
             font-size: 1.1rem;
             color: $veryDarkBlue;
+            pointer-events: all;
             text-transform: capitalize;
+            cursor: pointer !important;
+            padding: .625rem 0 .625rem 2rem;
+            background-color: $veryLightGray;
+            transition: all .3s ease-in-out;
+
+            &:not(:last-child) {
+              border-bottom: solid 1px #ccc;
+            }
 
             &:hover {
-              padding-left: .625rem;
+              background-color: #ccc;
             }
           }
         }
@@ -230,9 +239,19 @@
 
         &__regions {
           background-color: $darkBlue;
+          box-shadow: 0 1px 8px 2px $veryDarkBlue;
 
           &__list__item {
             color: $white;
+            background-color: $darkBlue;
+
+            &:hover {
+              background-color: $veryDarkBlue;
+            }
+
+            &:not(:last-child) {
+              border-bottom: solid 1px $veryDarkBlue;
+            }
           }
         }
       }
