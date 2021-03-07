@@ -17,8 +17,8 @@
           <li
             :key="region"
             v-for="region in regionList"
-            @click="setCurrentRegion(region)"
-            class="filterarea__filter__regions__list__item">
+            class="filterarea__filter__regions__list__item"
+            @click="setCurrentRegion(currentRegion == region ? '' : region)">
             {{ region }}
             <i v-if="regionSelected && currentRegion == region" class="fas fa-check"></i>
           </li>
@@ -165,6 +165,7 @@
       }
 
       &__regions {
+        z-index: -1;
         width: 100%;
         height: auto;
         top: 100%;
@@ -176,7 +177,7 @@
         pointer-events: none;
         margin-top: -1.5625rem;
         border-radius: inherit;
-        box-shadow: 0 1px 8px 2px #aaa;
+        box-shadow: 0 .0625rem .5rem .125rem #aaa;
 
         &__list {
           @include flex {
@@ -200,7 +201,7 @@
             transition: all .3s ease-in-out;
 
             &:not(:last-child) {
-              border-bottom: solid 1px #ccc;
+              border-bottom: solid .0625rem #ccc;
             }
 
             &:hover {
@@ -216,6 +217,7 @@
         }
 
         #{$this}__filter__regions {
+          z-index: 1;
           @include fadeIn;
           pointer-events: all;
           margin-top: .3125rem;
@@ -256,7 +258,7 @@
 
         &__regions {
           background-color: $darkBlue;
-          box-shadow: 0 1px 8px 2px $veryDarkBlue;
+          box-shadow: 0 .0625rem .5rem .125rem $veryDarkBlue;
 
           &__list__item {
             color: $white;
@@ -267,7 +269,7 @@
             }
 
             &:not(:last-child) {
-              border-bottom: solid 1px $veryDarkBlue;
+              border-bottom: solid .0625rem $veryDarkBlue;
             }
           }
         }
