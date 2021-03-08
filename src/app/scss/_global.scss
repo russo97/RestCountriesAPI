@@ -26,6 +26,11 @@ button {
   justify-content: space-between;
 }
 
+%flexJC_AI_CENTER {
+  align-items: center;
+  justify-content: center;
+}
+
 %flexFD_C {
   flex-direction: column;
 }
