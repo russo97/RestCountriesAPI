@@ -5,6 +5,11 @@
     <div class="countrieslist__container container">
       <country
         :key="country.name"
+        :name="country.name"
+        :flag="country.flag"
+        :region="country.region"
+        :capital="country.capital"
+        :population="country.population"
         v-for="country in countryList" />
     </div>
   </div>
@@ -36,12 +41,6 @@
       ...mapActions('Countries', [
         'setCountryList'
       ])
-    },
-
-    watch: {
-      countryList (cur) {
-        console.log('update', cur);
-      }
     }
   }
 </script>

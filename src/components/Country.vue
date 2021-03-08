@@ -1,24 +1,25 @@
 <template>
   <div class="country">
-    <div class="country__flag">
-
+    <div
+      class="country__flag"
+      :style="{ '--flag': `url(${flag})` }">
     </div>
     <div class="country__details">
       <h3 class="country__details__name">
-        awesome country
+        {{ name }}
       </h3>
 
       <p class="country__details__info">
         <span class="country__details__info__item">
-          <strong>Population:</strong> 206.135.893
+          <strong>Population:</strong> {{ population }}
         </span>
 
         <span class="country__details__info__item">
-          <strong>Region:</strong> America
+          <strong>Region:</strong> {{ region }}
         </span>
 
         <span class="country__details__info__item">
-          <strong>Capital:</strong> Brasília
+          <strong>Capital:</strong> {{ capital }}
         </span>
       </p>
     </div>
@@ -27,7 +28,9 @@
 
 <script>
 export default {
-  name: 'Country'
+  name: 'Country',
+
+  props: ['name', 'population', 'region', 'capital', 'flag']
 }
 </script>
 
@@ -54,7 +57,10 @@ export default {
 
     &__flag {
       position: relative;
-      background: gainsboro;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: var(--flag);
     }
 
     &__details {
