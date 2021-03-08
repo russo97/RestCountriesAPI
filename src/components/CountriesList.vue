@@ -55,6 +55,16 @@
         flex-direction: column;
         justify-content: space-between;
       }
+
+      @include breakpoint-up (medium) {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+
+      @include breakpoint-up (desktop) {
+        justify-content: space-between;
+      }
     }
   }
 </style>

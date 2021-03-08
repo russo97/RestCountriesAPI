@@ -57,7 +57,7 @@
     $this: &;
 
     width: 100%;
-    height: 480px;
+    height: 450px;
     cursor: pointer;
     max-width: 320px;
     overflow: hidden;
@@ -68,6 +68,11 @@
 
     @include flex {
       @extend %flexFD_C, %flexJC_AI_CENTER;
+    }
+
+    @include breakpoint-up (desktop) {
+      height: 400px;
+      width: calc(100% / 4 - 30px);
     }
 
     & > * {
