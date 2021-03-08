@@ -1,8 +1,8 @@
 <template>
-  <div id="app" :class="{ dark: darkMode }">
+  <div id="app">
     <Header />
 
-    <transition-group name="route-change" tag="section" :id="sectionId">
+    <transition-group :class="{ dark: darkMode }" name="route-change" tag="section" :id="sectionId">
       <router-view key="router"></router-view>
     </transition-group>
   </div>
@@ -38,7 +38,7 @@
     background-color: $white;
     transition: all .3s ease-in-out;
 
-    &.dark {
+    section.dark {
       background-color: $veryDarkBlue;
     }
   }

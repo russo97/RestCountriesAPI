@@ -1,5 +1,5 @@
 <template>
-  <div class="country">
+  <div class="country" :class="{ 'dark': isDarkMode }">
     <div class="country__flag" :style="flagURL">
     </div>
     <div class="country__details">
@@ -25,36 +25,46 @@
 </template>
 
 <script>
-export default {
-  name: 'Country',
+  import { mapGetters } from 'vuex';
 
-  computed: {
-    flagURL () {
-      return { '--flag': `url(${this.flag})` }
-    }
-  },
+  export default {
+    name: 'Country',
 
-  filters: {
-    num (value) {
-      return Intl.NumberFormat('pt-BR', {}).format(value);
-    }
-  },
+    computed: {
+      flagURL () {
+        return { '--flag': `url(${this.flag})` }
+      },
 
-  props: ['name', 'population', 'region', 'capital', 'flag']
-}
+      ...mapGetters('Countries', [
+        'isDarkMode'
+      ])
+    },
+
+    filters: {
+      num (value) {
+        return Intl.NumberFormat('pt-BR').format(value);
+      }
+    },
+
+    props: ['name', 'population', 'region', 'capital', 'flag']
+  }
 </script>
 
 <style lang="scss">
   @import "../../src/app/scss/styles.scss";
 
   .country {
+    $this: &;
+
     width: 100%;
     height: 480px;
+    cursor: pointer;
     max-width: 320px;
     overflow: hidden;
     border-radius: 10px;
     margin-bottom: 25px;
     background-color: $veryLightGray;
+    box-shadow: 0 1px 2px $veryLightGray;
 
     @include flex {
       @extend %flexFD_C, %flexJC_AI_CENTER;
@@ -82,8 +92,8 @@ export default {
       }
 
       &__name {
-        color: $darkBlue;
         font-size: 1.5rem;
+        color: $veryDarkBlue;
         text-transform: capitalize;
       }
 
@@ -96,10 +106,25 @@ export default {
         }
 
         &__item {
+          color: $veryDarkBlue;
+
           &:not(:last-child) {
             margin-bottom: 8px;
           }
         }
+      }
+    }
+
+    &.dark {
+      background-color: $darkBlue;
+      box-shadow: 0 2px 4px $veryDarkBlue;
+
+      #{$this}__details {
+        &__name,
+        &__info__item {
+          color: $white;
+        }
+
       }
     }
   }
