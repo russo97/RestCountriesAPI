@@ -1,8 +1,6 @@
 <template>
   <div class="country">
-    <div
-      class="country__flag"
-      :style="{ '--flag': `url(${flag})` }">
+    <div class="country__flag" :style="flagURL">
     </div>
     <div class="country__details">
       <h3 class="country__details__name">
@@ -29,6 +27,12 @@
 <script>
 export default {
   name: 'Country',
+
+  computed: {
+    flagURL () {
+      return { '--flag': `url(${this.flag})` }
+    }
+  },
 
   props: ['name', 'population', 'region', 'capital', 'flag']
 }
