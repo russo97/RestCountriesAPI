@@ -9,7 +9,7 @@
 
       <p class="country__details__info">
         <span class="country__details__info__item">
-          <strong>Population:</strong> {{ population }}
+          <strong>Population:</strong> {{ population | num }}
         </span>
 
         <span class="country__details__info__item">
@@ -31,6 +31,12 @@ export default {
   computed: {
     flagURL () {
       return { '--flag': `url(${this.flag})` }
+    }
+  },
+
+  filters: {
+    num (value) {
+      return Intl.NumberFormat('pt-BR', {}).format(value);
     }
   },
 
