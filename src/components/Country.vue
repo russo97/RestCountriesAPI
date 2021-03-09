@@ -1,5 +1,5 @@
 <template>
-  <div class="country" :class="{ 'dark': isDarkMode }">
+  <div class="country" :class="{ 'dark': isDarkMode }" @click="seeDetails">
     <div class="country__flag" :style="flagURL">
     </div>
     <div class="country__details">
@@ -30,6 +30,16 @@
   export default {
     name: 'Country',
 
+    methods: {
+      seeDetails () {
+        const { numericCode } = this;
+
+        this.$router.push({
+          path: `/country/${numericCode}`
+        });
+      }
+    },
+
     computed: {
       flagURL () {
         return { '--flag': `url(${this.flag})` }
@@ -46,7 +56,7 @@
       }
     },
 
-    props: ['name', 'population', 'region', 'capital', 'flag']
+    props: ['name', 'population', 'region', 'capital', 'flag', 'numericCode']
   }
 </script>
 
