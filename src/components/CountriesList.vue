@@ -10,6 +10,7 @@
         :region="country.region"
         :capital="country.capital"
         :population="country.population"
+        :numericCode="country.numericCode"
         v-for="country in countryList" />
     </div>
   </div>
