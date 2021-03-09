@@ -1,18 +1,28 @@
 <template>
   <div class="countrydetails">
-    {{ $route.params.numericCode }}
+    {{ details.name }}
   </div>
 </template>
 
 <script>
-  import { mapState } from 'vuex';
+  import { mapGetters } from 'vuex';
 
   export default {
     name: 'CountryDetails',
 
+    data () {
+      return {
+        details: {}
+      };
+    },
+
+    mounted () {
+      this.details = this.getCountryByNumericCode(this.$route.params.numericCode);
+    },
+
     computed: {
-      ...mapState('Countries', [
-        'countryList'
+      ...mapGetters('Countries', [
+        'getCountryByNumericCode'
       ])
     }
   }
