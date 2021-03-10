@@ -15,8 +15,8 @@
 html,
 body,
 #app {
-  height: 100%;
   font-size: 95%;
+  min-height: 100vh;
 }
 
 body {
