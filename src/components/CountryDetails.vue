@@ -27,18 +27,37 @@
       <div class="countrydetails__container__flag">
         <img :src="countryDetails.flag" alt="country logo" />
       </div>
+
+      <div class="countrydetails__container__details">
+        <h2 class="countrydetails__container__details__title">
+          {{ countryDetails.name }}
+        </h2>
+
+        <div class="countrydetails__container__details__infobox">
+          <div class="countrydetails__container__details__infobox__box1">
+            <span class="countrydetails__container__details__infobox__title">
+              <strong>Native name:</strong> {{ countryDetails.nativeName }}
+            </span>
+
+            <span class="countrydetails__container__details__infobox__title">
+              <strong>Population:</strong> {{ countryDetails.population | num }}
+            </span>
+          </div>
+          <div class="countrydetails__container__details__infobox__box2"></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import useful from '../utils';
   import { mapGetters } from 'vuex';
-  import sharedMethods from '../utils/sharedMethods';
 
   export default {
     name: 'CountryDetails',
 
-    extends: sharedMethods,
+    extends: useful,
 
     methods: {
       getBack () {

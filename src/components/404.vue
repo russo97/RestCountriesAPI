@@ -11,7 +11,7 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import sharedMethods from '../utils/sharedMethods';
+  import useful from '../utils';
 
   export default {
     name: 'NotFound',
@@ -22,7 +22,7 @@
       ])
     },
 
-    extends: sharedMethods
+    extends: useful
   }
 </script>
 

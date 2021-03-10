@@ -16,13 +16,13 @@
 </template>
 
 <script>
-  import sharedMethods from '../utils/sharedMethods';
+  import useful from '../utils';
   import { mapActions, mapGetters, mapState } from 'vuex';
 
   export default {
     name: 'Header',
 
-    extends: sharedMethods,
+    extends: useful,
 
     created () {
       this.setCountryList();

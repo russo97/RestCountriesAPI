@@ -26,12 +26,12 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import filters from '../utils/filters';
+  import useful from '../utils';
 
   export default {
     name: 'Country',
 
-    extends: filters,
+    extends: useful,
 
     methods: {
       seeDetails () {
