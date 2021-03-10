@@ -21,11 +21,11 @@ button,
   cursor: pointer;
   color: $darkBlue;
   font-weight: bold;
-  border-radius: 4px;
+  border-radius: .25rem;
   background-color: $white;
   padding: .625rem .9375rem;
   text-transform: uppercase;
-  box-shadow: 0 1px 3px $veryLightGray;
+  box-shadow: 0 .0625rem .1875rem $veryLightGray;
 
   i {
     margin-right: 1rem;

@@ -132,10 +132,10 @@
     }
 
     &__title {
-      max-width: 500px;
       color: $darkBlue;
       font-size: 2.3rem;
       text-align: center;
+      max-width: 31.25rem;
       margin-bottom: 2rem;
       transition: all .1s ease-in-out;
     }
@@ -165,7 +165,7 @@
       #{$this}__button {
         color: $white;
         background-color: $darkBlue;
-        box-shadow: 0 1px 3px $veryDarkBlue;
+        box-shadow: 0 .0625rem .1875rem $veryDarkBlue;
       }
     }
 

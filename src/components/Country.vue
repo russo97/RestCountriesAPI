@@ -66,12 +66,12 @@
     width: 100%;
     height: 28.125rem;
     cursor: pointer;
-    max-width: 320px;
+    max-width: 20rem;
     overflow: hidden;
     border-radius: .625rem;
     margin-bottom: 1.5625rem;
     background-color: $veryLightGray;
-    box-shadow: 0 1px 2px $veryLightGray;
+    box-shadow: 0 .0625rem .125rem $veryLightGray;
 
     @include flex {
       @extend %flexFD_C, %flexJC_AI_CENTER;
