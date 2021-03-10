@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ dark: darkMode }">
     <Header />
 
     <transition-group :class="{ dark: darkMode }" name="route-change" tag="section" :id="sectionId">
@@ -38,7 +38,7 @@
     background-color: $white;
     transition: all .3s ease-in-out;
 
-    section.dark {
+    &.dark {
       background-color: $veryDarkBlue;
     }
   }

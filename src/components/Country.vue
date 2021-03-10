@@ -26,9 +26,12 @@
 
 <script>
   import { mapGetters } from 'vuex';
+  import filters from '../utils/filters';
 
   export default {
     name: 'Country',
+
+    extends: filters,
 
     methods: {
       seeDetails () {
@@ -50,12 +53,6 @@
       ])
     },
 
-    filters: {
-      num (value) {
-        return Intl.NumberFormat('pt-BR').format(value);
-      }
-    },
-
     props: ['name', 'population', 'region', 'capital', 'flag', 'numericCode']
   }
 </script>
@@ -67,12 +64,12 @@
     $this: &;
 
     width: 100%;
-    height: 450px;
+    height: 28.125rem;
     cursor: pointer;
     max-width: 320px;
     overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 25px;
+    border-radius: .625rem;
+    margin-bottom: 1.5625rem;
     background-color: $veryLightGray;
     box-shadow: 0 1px 2px $veryLightGray;
 
@@ -81,8 +78,8 @@
     }
 
     @include breakpoint-up (desktop) {
-      height: 400px;
-      width: calc(100% / 4 - 30px);
+      height: 25rem;
+      width: calc(100% / 4 - 1.875rem);
     }
 
     & > * {
@@ -99,7 +96,7 @@
     }
 
     &__details {
-      padding: 35px 30px;
+      padding: 2.1875rem 1.875rem;
 
       @include flex {
         @extend %flexFD_C;
@@ -113,7 +110,7 @@
       }
 
       &__info {
-        margin-top: 20px;
+        margin-top: 1.25rem;
         font-size: 1.2rem;
 
         @include flex {
@@ -124,7 +121,7 @@
           color: $veryDarkBlue;
 
           &:not(:last-child) {
-            margin-bottom: 8px;
+            margin-bottom: .5rem;
           }
         }
       }
@@ -132,7 +129,7 @@
 
     &.dark {
       background-color: $darkBlue;
-      box-shadow: 0 2px 4px $veryDarkBlue;
+      box-shadow: 0 .125rem .25rem $veryDarkBlue;
 
       #{$this}__details {
         &__name,
