@@ -15,6 +15,23 @@ button {
   }
 }
 
+button,
+.button {
+  border: none;
+  cursor: pointer;
+  color: $darkBlue;
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: $white;
+  padding: .625rem .9375rem;
+  text-transform: uppercase;
+  box-shadow: 0 1px 3px $veryLightGray;
+
+  i {
+    margin-right: 1rem;
+  }
+}
+
 @mixin flex {
   display: flex;
 
