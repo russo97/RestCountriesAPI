@@ -21,7 +21,7 @@
   export default {
     name: 'Header',
 
-    mounted () {
+    created () {
       this.setCountryList();
     },
 
@@ -32,7 +32,9 @@
       ]),
 
       redirectHome () {
-        this.$router.push('/');
+        if (this.$router.currentRoute.path !== '/') {
+          this.$router.push('/');
+        }
       }
     },
 
