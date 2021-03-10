@@ -16,10 +16,13 @@
 </template>
 
 <script>
+  import sharedMethods from '../utils/sharedMethods';
   import { mapActions, mapGetters, mapState } from 'vuex';
 
   export default {
     name: 'Header',
+
+    extends: sharedMethods,
 
     created () {
       this.setCountryList();
@@ -29,13 +32,7 @@
       ...mapActions('Countries', [
         'setCountryList',
         'toggleDarkTheme'
-      ]),
-
-      redirectHome () {
-        if (this.$router.currentRoute.path !== '/') {
-          this.$router.push('/');
-        }
-      }
+      ])
     },
 
     computed: {
