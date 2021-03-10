@@ -51,3 +51,24 @@ button,
 %flexFD_C {
   flex-direction: column;
 }
+
+
+@include breakpoint-up (desktop) {
+  .onlydesktop {
+    display: block;
+  }
+
+  .onlymobile {
+    display: none;
+  }
+}
+
+@include breakpoint-down (desktop) {
+  .onlydesktop {
+    display: none;
+  }
+
+  .onlymobile {
+    display: block;
+  }
+}
