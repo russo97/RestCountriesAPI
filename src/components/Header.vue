@@ -16,13 +16,18 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
+  import { mapActions, mapGetters, mapState } from 'vuex';
 
   export default {
     name: 'Header',
 
+    mounted () {
+      this.setCountryList();
+    },
+
     methods: {
       ...mapActions('Countries', [
+        'setCountryList',
         'toggleDarkTheme'
       ])
     },
@@ -30,6 +35,10 @@
     computed: {
       ...mapGetters('Countries', [
         'isDarkMode'
+      ]),
+
+      ...mapState('Countries', [
+        'countryList'
       ])
     }
   }

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from 'vuex';
+  import { mapState } from 'vuex';
 
   import Country from './Country.vue';
   import FilterArea from './FilterArea.vue';
@@ -28,19 +28,9 @@
       FilterArea
     },
 
-    mounted () {
-      this.setCountryList();
-    },
-
     computed: {
       ...mapState('Countries', [
         'countryList'
-      ])
-    },
-
-    methods: {
-      ...mapActions('Countries', [
-        'setCountryList'
       ])
     }
   }
