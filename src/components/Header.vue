@@ -3,7 +3,7 @@
     class="header"
     :class="{ dark: isDarkMode }">
     <div class="header__container container">
-      <h3 class="header__title">Where in the world?</h3>
+      <h3 class="header__title" @click="redirectHome">Where in the world?</h3>
 
       <span class="header__darkswitch" @click="toggleDarkTheme">
         <i class="fa-moon" :class="[isDarkMode ? 'fas' : 'far']"></i>
@@ -29,7 +29,11 @@
       ...mapActions('Countries', [
         'setCountryList',
         'toggleDarkTheme'
-      ])
+      ]),
+
+      redirectHome () {
+        this.$router.push('/');
+      }
     },
 
     computed: {
@@ -65,6 +69,7 @@
     }
 
     &__title {
+      cursor: pointer;
       font-size: 1rem;
       color: $veryDarkBlue;
       transition: all .3s ease-in-out;
