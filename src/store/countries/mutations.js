@@ -4,7 +4,7 @@ const TOGGLE_DARK_MODE = state => {
 };
 
 const CHANGE_ROUTE_MODE = (state, mode) => {
-  state.darkMode = mode;
+  state.routeMode = mode;
 };
 
 const SET_CURRENT_REGION = (state, val) => {
