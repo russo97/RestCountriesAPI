@@ -9,7 +9,6 @@ const setCurrentRegion = ({ commit }, val) => {
 
 const changeRouteMode = ({ commit }, val) => {
   commit('CHANGE_ROUTE_MODE', val);
-  console.log('change')
 };
 
 const setCountryList = async ({ commit }) => {
