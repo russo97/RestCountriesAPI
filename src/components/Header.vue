@@ -31,6 +31,7 @@
     methods: {
       ...mapActions('Countries', [
         'setCountryList',
+        'changeRouteMode',
         'toggleDarkTheme'
       ])
     },
@@ -43,6 +44,12 @@
       ...mapState('Countries', [
         'countryList'
       ])
+    },
+
+    watch: {
+      $route (from, to) {
+        this.changeRouteMode(from.path.length < to.path.length ? 'route-enter' : 'route-leave')
+      }
     }
   }
 </script>

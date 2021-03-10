@@ -72,3 +72,32 @@ button,
     display: block;
   }
 }
+
+
+
+.route-leave-enter-active,
+.route-enter-enter-active,
+.route-leave-leave-active,
+.route-enter-leave-active {
+  transition: all .1s ease-in-out;
+}
+
+.route-leave-enter-to,
+.route-enter-enter-to,
+.route-leave-leave-to,
+.route-enter-leave-to {
+  visibility: visible;
+}
+
+.route-leave-enter-to,
+.route-enter-enter-to {
+  opacity: 1;
+}
+
+// ANIMACOES DURANTE AS MUDANCAS DE ROTAS
+.route-leave-enter,
+.route-enter-enter,
+.route-leave-leave-to,
+.route-enter-leave-to {
+  opacity: 0;
+}

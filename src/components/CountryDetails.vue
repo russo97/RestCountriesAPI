@@ -17,6 +17,17 @@
         Go back home
       </button>
     </div>
+
+    <div class="countrydetails__container" v-if="displayError">
+      <button class="countrydetails__button" @click="getBack">
+        <i class="fas fa-long-arrow-alt-left"></i>
+        back
+      </button>
+
+      <div class="countrydetails__container__flag">
+        <img :src="countryDetails.flag" alt="country logo" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -141,6 +152,8 @@
       }
     }
 
+
+
     &.dark {
       color: $white;
       background-color: $veryDarkBlue;
@@ -153,6 +166,31 @@
         color: $white;
         background-color: $darkBlue;
         box-shadow: 0 1px 3px $veryDarkBlue;
+      }
+    }
+
+
+
+
+    &__container {
+      width: 100%;
+
+      @include flex {
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      button {
+        align-self: flex-start;
+      }
+
+      &__flag {
+        width: 100%;
+        margin-top: 3rem;
+
+        img {
+          width: 100%;
+        }
       }
     }
   }

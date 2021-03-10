@@ -2,7 +2,7 @@
   <div id="app" :class="{ dark: darkMode }">
     <Header />
 
-    <transition-group :class="{ dark: darkMode }" name="route-change" tag="section" :id="sectionId">
+    <transition-group :class="{ dark: darkMode }" :name="routeMode" tag="section" :id="sectionId">
       <router-view key="router"></router-view>
     </transition-group>
   </div>
@@ -19,7 +19,8 @@
     computed: {
       ...mapState('Countries', [
         'darkMode',
-        'sectionId'
+        'sectionId',
+        'routeMode'
       ])
     },
 
