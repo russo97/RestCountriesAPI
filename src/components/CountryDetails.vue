@@ -35,15 +35,61 @@
 
         <div class="countrydetails__container__details__infobox">
           <div class="countrydetails__container__details__infobox__box1">
-            <span class="countrydetails__container__details__infobox__title">
+            <span class="countrydetails__container__details__infobox__item">
               <strong>Native name:</strong> {{ countryDetails.nativeName }}
             </span>
 
-            <span class="countrydetails__container__details__infobox__title">
+            <span class="countrydetails__container__details__infobox__item">
               <strong>Population:</strong> {{ countryDetails.population | num }}
             </span>
+
+            <span class="countrydetails__container__details__infobox__item">
+              <strong>Population:</strong> {{ countryDetails.population | num }}
+            </span>
+
+            <span class="countrydetails__container__details__infobox__item">
+              <strong>Region:</strong> {{ countryDetails.region }}
+            </span>
+
+            <span class="countrydetails__container__details__infobox__item">
+              <strong>Sub region:</strong> {{ countryDetails.subregion }}
+            </span>
+
+            <span class="countrydetails__container__details__infobox__item">
+              <strong>Capital:</strong> {{ countryDetails.capital }}
+            </span>
           </div>
-          <div class="countrydetails__container__details__infobox__box2"></div>
+
+          <div class="countrydetails__container__details__infobox__box2">
+            <span class="countrydetails__container__details__infobox__item">
+              <strong>Top level domain:</strong> {{ countryDetails.topLevelDomain.join(', ') }}
+            </span>
+
+            <span class="countrydetails__container__details__infobox__item">
+              <strong>Currencies:</strong> {{ countryDetails.currencies.map(currencies => currencies.name).join(', ') }}
+            </span>
+
+            <span class="countrydetails__container__details__infobox__item">
+              <strong>Languages:</strong> {{ countryDetails.languages.map(langs => langs.name).join(', ') }}
+            </span>
+          </div>
+        </div>
+
+        <div class="countrydetails__container__details__bCountries">
+          <h3 class="countrydetails__container__details__bCountries__title">Border countries</h3>
+
+          <div class="countrydetails__container__details__bCountries__list">
+            <button
+              :key="borderCountry"
+              v-for="borderCountry in countryDetails.borders"
+              class="countrydetails__container__details__bCountries__item">
+              {{ borderCountry }}
+            </button>
+
+            <span v-if="countryDetails.borders.length === 0">
+              There is no border countries
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -73,12 +119,6 @@
 
       numericCode () {
         return this.$route.params.numericCode;
-      },
-
-      hide () {
-        return {
-          'display': this.displayError ? 'none' : 'block'
-        };
       },
 
       displayError () {
@@ -209,6 +249,38 @@
 
         img {
           width: 100%;
+        }
+      }
+
+      &__details {
+        @include flex {
+          flex-direction: column;
+        }
+
+        &__title {
+          margin: 1.8rem 0 1rem;
+          font-size: 2rem;
+          color: $darkBlue;
+        }
+
+        &__infobox {
+          @include flex {
+            flex-direction: column;
+          }
+
+          &__box1,
+          &__box2 {
+            @include flex {
+              padding: .5rem 0;
+              flex-direction: column;
+            }
+          }
+
+          &__item {
+            font-size: 1rem;
+            color: $darkBlue;
+            margin: .1875rem 0;
+          }
         }
       }
     }
