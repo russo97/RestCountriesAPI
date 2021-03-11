@@ -11,6 +11,10 @@ export default {
       if (this.$router.currentRoute.path !== '/') {
         this.$router.push('/');
       }
+    },
+
+    previousPage () {
+      this.$router.go(-1);
     }
   }
 }
