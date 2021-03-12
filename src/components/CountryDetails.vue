@@ -19,76 +19,74 @@
     </div>
 
     <div class="countrydetails__container" v-if="displayError">
-      <button class="countrydetails__button" @click="getBack">
+      <button class="countrydetails__button" @click="previousPage">
         <i class="fas fa-long-arrow-alt-left"></i>
         back
       </button>
 
-      <div class="countrydetails__container__flag">
-        <img :src="countryDetails.flag" alt="country logo" />
-      </div>
-
-      <div class="countrydetails__container__details">
-        <h2 class="countrydetails__container__details__title">
-          {{ countryDetails.name }}
-        </h2>
-
-        <div class="countrydetails__container__details__infobox">
-          <div class="countrydetails__container__details__infobox__box1">
-            <span class="countrydetails__container__details__infobox__item">
-              <strong>Native name:</strong> {{ countryDetails.nativeName }}
-            </span>
-
-            <span class="countrydetails__container__details__infobox__item">
-              <strong>Population:</strong> {{ countryDetails.population | num }}
-            </span>
-
-            <span class="countrydetails__container__details__infobox__item">
-              <strong>Population:</strong> {{ countryDetails.population | num }}
-            </span>
-
-            <span class="countrydetails__container__details__infobox__item">
-              <strong>Region:</strong> {{ countryDetails.region }}
-            </span>
-
-            <span class="countrydetails__container__details__infobox__item">
-              <strong>Sub region:</strong> {{ countryDetails.subregion }}
-            </span>
-
-            <span class="countrydetails__container__details__infobox__item">
-              <strong>Capital:</strong> {{ countryDetails.capital }}
-            </span>
-          </div>
-
-          <div class="countrydetails__container__details__infobox__box2">
-            <span class="countrydetails__container__details__infobox__item">
-              <strong>Top level domain:</strong> {{ countryDetails.topLevelDomain.join(', ') }}
-            </span>
-
-            <span class="countrydetails__container__details__infobox__item">
-              <strong>Currencies:</strong> {{ countryDetails.currencies.map(currencies => currencies.name).join(', ') }}
-            </span>
-
-            <span class="countrydetails__container__details__infobox__item">
-              <strong>Languages:</strong> {{ countryDetails.languages.map(langs => langs.name).join(', ') }}
-            </span>
-          </div>
+      <div class="countrydetails__container__flex">
+        <div class="countrydetails__container__flag">
+          <img :src="countryDetails.flag" alt="country logo" />
         </div>
 
-        <div class="countrydetails__container__details__bCountries">
-          <h3 class="countrydetails__container__details__bCountries__title">Border countries</h3>
+        <div class="countrydetails__container__details">
+          <h2 class="countrydetails__container__details__title">
+            {{ countryDetails.name }}
+          </h2>
 
-          <div class="countrydetails__container__details__bCountries__list">
-            <button
-              :key="borderCountry"
-              v-for="borderCountry in countryDetails.borders"
-              class="countrydetails__container__details__bCountries__item">
-              {{ borderCountry }}
-            </button>
+          <div class="countrydetails__container__details__infobox">
+            <div class="countrydetails__container__details__infobox__box1">
+              <span class="countrydetails__container__details__infobox__item">
+                <strong>Native name:</strong> {{ countryDetails.nativeName }}
+              </span>
 
-            <span v-if="countryDetails.borders.length === 0">
-              There is no border countries
-            </span>
+              <span class="countrydetails__container__details__infobox__item">
+                <strong>Population:</strong> {{ countryDetails.population | num }}
+              </span>
+
+              <span class="countrydetails__container__details__infobox__item">
+                <strong>Region:</strong> {{ countryDetails.region }}
+              </span>
+
+              <span class="countrydetails__container__details__infobox__item">
+                <strong>Sub region:</strong> {{ countryDetails.subregion }}
+              </span>
+
+              <span class="countrydetails__container__details__infobox__item">
+                <strong>Capital:</strong> {{ countryDetails.capital }}
+              </span>
+            </div>
+
+            <div class="countrydetails__container__details__infobox__box2">
+              <span class="countrydetails__container__details__infobox__item">
+                <strong>Top level domain:</strong> {{ countryDetails.topLevelDomain.join(', ') }}
+              </span>
+
+              <span class="countrydetails__container__details__infobox__item">
+                <strong>Currencies:</strong> {{ countryDetails.currencies.map(currencies => currencies.name).join(', ') }}
+              </span>
+
+              <span class="countrydetails__container__details__infobox__item">
+                <strong>Languages:</strong> {{ countryDetails.languages.map(langs => langs.name).join(', ') }}
+              </span>
+            </div>
+          </div>
+
+          <div class="countrydetails__container__details__bCountries">
+            <h3 class="countrydetails__container__details__bCountries__title">Border countries</h3>
+
+            <div class="countrydetails__container__details__bCountries__list">
+              <button
+                :key="borderCountry"
+                v-for="borderCountry in countryDetails.borders"
+                class="countrydetails__container__details__bCountries__item">
+                {{ borderCountry }}
+              </button>
+
+              <span v-if="countryDetails.borders.length === 0">
+                There is no border countries
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -104,12 +102,6 @@
     name: 'CountryDetails',
 
     extends: useful,
-
-    methods: {
-      getBack () {
-        this.$router.go(-1);
-      }
-    },
 
     computed: {
       ...mapGetters('Countries', [
@@ -252,20 +244,56 @@
         }
       }
 
+      &__flex {
+        @include flex {
+          flex-direction: column;
+        }
+
+        @include breakpoint-up (desktop) {
+          margin-top: 2rem;
+          flex-direction: row;
+          justify-content: space-between;
+
+          & > * {
+            margin: 0;
+            flex-basis: 47%;
+          }
+        }
+
+        [class$="flag"] {
+          @include flex {
+            align-items: center;
+          }
+        }
+      }
+
       &__details {
         @include flex {
           flex-direction: column;
         }
 
+        @include breakpoint-up (medium) {
+          padding: 0 50px;
+        }
+
+        @include breakpoint-up (desktop) {
+          padding: 0;
+        }
+
         &__title {
-          margin: 1.8rem 0 1rem;
           font-size: 2rem;
           color: $darkBlue;
+          margin: 1.8rem 0 1rem;
         }
 
         &__infobox {
           @include flex {
             flex-direction: column;
+          }
+
+          @include breakpoint-up (desktop) {
+            flex-direction: row;
+            justify-content: space-between;
           }
 
           &__box1,
@@ -274,6 +302,10 @@
               padding: .5rem 0;
               flex-direction: column;
             }
+
+            span {
+              color: $darkBlue;
+            }
           }
 
           &__item {
@@ -281,6 +313,61 @@
             color: $darkBlue;
             margin: .1875rem 0;
           }
+        }
+
+        &__bCountries {
+          margin: 1.5rem 0;
+
+          &__title {
+            color: $darkBlue;
+            font-size: 1.2rem;
+            margin-bottom: .7rem;
+          }
+
+          &__list {
+            padding: .5rem 0;
+
+            @include flex {
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: flex-start;
+            }
+
+            button {
+              margin: .4rem;
+            }
+          }
+        }
+      }
+    }
+
+    &.dark #{$this}__container {
+      &__details__title {
+        color: $white;
+      }
+
+      &__details__infobox {
+        &__box1 span,
+        &__box2 span,
+        &__box1 span strong,
+        &__box2 span strong {
+          color: $white;
+        }
+      }
+
+      &__details__bCountries {
+        &__title {
+          color: $white;
+        }
+
+        &__item {
+          color: $white;
+          background-color: $darkBlue;
+          box-shadow: 0 1px 3px $veryDarkBlue;
+        }
+
+        span {
+          color: $white;
         }
       }
     }
