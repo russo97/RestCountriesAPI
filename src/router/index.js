@@ -11,7 +11,7 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: CountriesList },
-  { path: '/country/:numericCode', component: CountryDetails },
+  { path: '/country/:alpha3Code', component: CountryDetails },
   { path: '*', component: NotFound }
 ];
 

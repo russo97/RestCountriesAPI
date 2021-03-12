@@ -17,9 +17,9 @@ export default {
       this.$router.go(-1);
     },
 
-    seeCountryDetails (numericCode) {
+    seeCountryDetails (alpha3Code) {
       this.$router.push(
-        `/country/${numericCode}`
+        `/country/${alpha3Code}`
       );
     }
   }

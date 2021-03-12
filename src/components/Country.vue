@@ -1,6 +1,7 @@
 <template>
-  <div class="country" :class="{ 'dark': isDarkMode }" @click="seeCountryDetails(numericCode)">
+  <div class="country" :class="{ 'dark': isDarkMode }" @click="seeCountryDetails(alpha3Code)">
     <div class="country__flag" :style="flagURL">
+      <img class="country__flag__image" :src="flag" alt="country flag" />
     </div>
     <div class="country__details">
       <h3 class="country__details__name">
@@ -35,7 +36,7 @@
 
     computed: {
       flagURL () {
-        return { '--flag': `url(${this.flag})` }
+        return this.flag;
       },
 
       ...mapGetters('Countries', [
@@ -43,7 +44,7 @@
       ])
     },
 
-    props: ['name', 'population', 'region', 'capital', 'flag', 'numericCode']
+    props: ['name', 'population', 'region', 'capital', 'flag', 'numericCode', 'alpha3Code']
   }
 </script>
 
@@ -78,11 +79,12 @@
     }
 
     &__flag {
-      position: relative;
-      background-size: 110% 110%;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-image: var(--flag);
+      @include flex;
+
+      &__image {  
+        width: 100%;
+        object-fit: cover;
+      }
     }
 
     &__details {

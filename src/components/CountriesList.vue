@@ -9,6 +9,7 @@
         :flag="country.flag"
         :region="country.region"
         :capital="country.capital"
+        :alpha3Code="country.alpha3Code"
         :population="country.population"
         :numericCode="country.numericCode"
         v-show="regionFilter(country.region)"

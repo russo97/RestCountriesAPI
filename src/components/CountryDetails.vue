@@ -77,9 +77,9 @@
 
             <div class="countrydetails__container__details__bCountries__list">
               <button
-                :key="borderCountry.numericCode"
+                :key="borderCountry.alpha3Code"
                 v-for="borderCountry in bordersCountries"
-                @click="seeCountryDetails(borderCountry.numericCode)"
+                @click="seeCountryDetails(borderCountry.alpha3Code)"
                 class="countrydetails__container__details__bCountries__item">
                 {{ borderCountry.name }}
               </button>
@@ -107,7 +107,7 @@
     computed: {
       ...mapGetters('Countries', [
         'isDarkMode',
-        'getCountryByNumericCode'
+        'getCountryByAlpha3Code'
       ]),
 
       ...mapState('Countries', [
@@ -118,12 +118,12 @@
         const { countryList, countryDetails } = this;
 
         return countryList.filter(
-          country => countryDetails.borders.some( border => country.cioc === border )
+          country => countryDetails.borders.some( border => country.alpha3Code === border )
         );
       },
 
-      numericCode () {
-        return this.$route.params.numericCode;
+      alpha3Code () {
+        return this.$route.params.alpha3Code;
       },
 
       displayError () {
@@ -133,9 +133,9 @@
       },
 
       countryDetails () {
-        const { numericCode, getCountryByNumericCode } = this;
+        const { alpha3Code, getCountryByAlpha3Code } = this;
 
-        return getCountryByNumericCode(numericCode);
+        return getCountryByAlpha3Code(alpha3Code);
       }
     }
   }
@@ -348,6 +348,11 @@
 
             button {
               margin: .4rem;
+              max-width: 10rem;
+              max-height: 4rem;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
             }
           }
         }
