@@ -2,7 +2,7 @@
   <div class="filterarea container" :class="{ dark: darkMode }">
     <div class="filterarea__search">
       <i class="fas fa-search"></i>
-      <input type="text" class="filterarea__search__input" placeholder="Search for a country..." />
+      <input type="text" list="countryDatalist" class="filterarea__search__input" placeholder="Search for a country..." />
     </div>
 
     <div class="filterarea__filter" :class="{ showRegions }" @click="showRegionsToggle">
@@ -25,11 +25,15 @@
         </ul>
       </div>
     </div>
+
+    <countries-datalist />
   </div>
 </template>
 
 <script>
   import { mapActions, mapGetters, mapState } from 'vuex';
+
+  import CountriesDatalist from './CountriesDatalist.vue';
 
   export default {
     name: "FilterArea",
@@ -60,6 +64,10 @@
       ...mapGetters('Countries', [
         'regionSelected'
       ])
+    },
+
+    components: {
+      CountriesDatalist
     }
   }
 </script>
