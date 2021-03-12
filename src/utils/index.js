@@ -15,6 +15,12 @@ export default {
 
     previousPage () {
       this.$router.go(-1);
+    },
+
+    seeCountryDetails (numericCode) {
+      this.$router.push(
+        `/country/${numericCode}`
+      );
     }
   }
 }
