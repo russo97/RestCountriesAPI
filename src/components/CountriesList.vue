@@ -11,6 +11,7 @@
         :capital="country.capital"
         :population="country.population"
         :numericCode="country.numericCode"
+        v-show="regionFilter(country.region)"
         v-for="country in countryList" />
     </div>
   </div>
@@ -28,9 +29,18 @@
       FilterArea
     },
 
+    methods: {
+      regionFilter (region) {
+        const { currentRegion } = this;
+
+        return !currentRegion.length || currentRegion.length && currentRegion === region.toLowerCase();
+      }
+    },
+
     computed: {
       ...mapState('Countries', [
-        'countryList'
+        'countryList',
+        'currentRegion'
       ])
     }
   }
