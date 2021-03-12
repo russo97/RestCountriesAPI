@@ -77,10 +77,11 @@
 
             <div class="countrydetails__container__details__bCountries__list">
               <button
-                :key="borderCountry"
-                v-for="borderCountry in countryDetails.borders"
+                :key="borderCountry.numericCode"
+                v-for="borderCountry in bordersCountries"
+                @click="seeCountryDetails(borderCountry.numericCode)"
                 class="countrydetails__container__details__bCountries__item">
-                {{ borderCountry }}
+                {{ borderCountry.name }}
               </button>
 
               <span v-if="countryDetails.borders.length === 0">
@@ -96,7 +97,7 @@
 
 <script>
   import useful from '../utils';
-  import { mapGetters } from 'vuex';
+  import { mapGetters, mapState } from 'vuex';
 
   export default {
     name: 'CountryDetails',
@@ -108,6 +109,18 @@
         'isDarkMode',
         'getCountryByNumericCode'
       ]),
+
+      ...mapState('Countries', [
+        'countryList'
+      ]),
+
+      bordersCountries () {
+        const { countryList, countryDetails } = this;
+
+        return countryList.filter(
+          country => countryDetails.borders.some( border => country.cioc === border )
+        );
+      },
 
       numericCode () {
         return this.$route.params.numericCode;
