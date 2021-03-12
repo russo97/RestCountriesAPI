@@ -1,5 +1,6 @@
 
 export default {
+  userInput: '',
   darkMode: false,
   sectionId: 'countriesList',
   routeMode: 'route-enter',
