@@ -123,7 +123,7 @@
       },
 
       alpha3Code () {
-        return this.$route.params.alpha3Code;
+        return this.$route.params.alpha3Code.toUpperCase();
       },
 
       displayError () {
