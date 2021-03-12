@@ -59,8 +59,9 @@
     cursor: pointer;
     max-width: 20rem;
     overflow: hidden;
-    border-radius: .625rem;
+    border-radius: .3125rem;
     margin-bottom: 1.5625rem;
+    transition: all .3s ease-in-out;
     background-color: $veryLightGray;
     box-shadow: 0 .0625rem .125rem $veryLightGray;
 
@@ -96,14 +97,14 @@
       }
 
       &__name {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: $veryDarkBlue;
         text-transform: capitalize;
       }
 
       &__info {
         margin-top: 1.25rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
 
         @include flex {
           @extend %flexFD_C;

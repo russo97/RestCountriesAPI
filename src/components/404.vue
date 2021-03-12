@@ -59,7 +59,7 @@
 
       &.dark {
         color: $white;
-        background-color: $veryDarkBlue;
+        background-color: $darkBlue;
         box-shadow: 0 .0625rem .1875rem $darkBlue;
       }
     }

@@ -2,7 +2,7 @@
   <div class="countrieslist">
     <filter-area />
 
-    <div class="countrieslist__container container">
+    <transition-group name="bounce" tag="div" class="countrieslist__container container">
       <country
         :key="country.name"
         :name="country.name"
@@ -12,9 +12,8 @@
         :alpha3Code="country.alpha3Code"
         :population="country.population"
         :numericCode="country.numericCode"
-        v-show="regionFilter(country.region)"
-        v-for="country in countryList" />
-    </div>
+        v-for="country in filteredCountryList" />
+    </transition-group>
   </div>
 </template>
 
@@ -42,7 +41,13 @@
       ...mapState('Countries', [
         'countryList',
         'currentRegion'
-      ])
+      ]),
+
+      filteredCountryList () {
+        const { countryList, regionFilter } = this;
+
+        return countryList.filter(country => regionFilter(country.region));
+      }
     }
   }
 </script>
@@ -52,6 +57,8 @@
 
   .countrieslist {
     &__container {
+      transition: all .4s ease-in-out;
+
       @include flex {
         align-items: center;
         flex-direction: column;
@@ -69,4 +76,39 @@
       }
     }
   }
+
+
+  .bounce-transition {
+    opacity: 0;
+    display: inline-block; /* otherwise scale animation won't work */
+    transition: all .6s ease-in-out;
+  }
+
+  .bounce-enter,
+  .bounce-enter-active {
+    animation: bounce .6s forwards;
+  }
+
+  .bounce-leave,
+  .bounce-leave-active {
+    animation: bounce .6s reverse forwards;
+  }
+
+  .bounce-leave-to {
+    opacity: 0;
+    position: absolute;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
 </style>

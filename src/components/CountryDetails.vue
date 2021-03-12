@@ -77,6 +77,7 @@
 
             <div class="countrydetails__container__details__bCountries__list">
               <button
+                :title="borderCountry.name"
                 :key="borderCountry.alpha3Code"
                 v-for="borderCountry in bordersCountries"
                 @click="seeCountryDetails(borderCountry.alpha3Code)"
@@ -149,6 +150,7 @@
 
     color: $darkBlue;
     background-color: $white;
+    // transition: all .3s ease-in-out;
 
     @include flex {
       align-items: center;
