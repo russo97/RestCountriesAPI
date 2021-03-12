@@ -2,12 +2,12 @@
   <div class="filterarea container" :class="{ dark: darkMode }">
     <div class="filterarea__search">
       <i class="fas fa-search"></i>
-      <input type="text" list="countryDatalist" class="filterarea__search__input" placeholder="Search for a country..." />
+      <input type="text" id="filter__search__input" autocomplete="off" list="countryDatalist" class="filterarea__search__input" placeholder="Search for a country..." />
     </div>
 
     <div class="filterarea__filter" :class="{ showRegions }" @click="showRegionsToggle">
       <span class="filterarea__filter__label">
-        Filter by Region
+        {{ currentRegion.toUpperCase() || 'Filter By Region' }}
       </span>
 
       <i class="fas fa-chevron-down"></i>
