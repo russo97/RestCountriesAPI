@@ -7,7 +7,7 @@ export default {
   countryList: [],
   regionList: [
     'africa',
-    'america',
+    'americas',
     'asia',
     'europe',
     'oceania'
