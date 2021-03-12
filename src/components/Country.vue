@@ -1,5 +1,5 @@
 <template>
-  <div class="country" :class="{ 'dark': isDarkMode }" @click="seeDetails">
+  <div class="country" :class="{ 'dark': isDarkMode }" @click="seeCountryDetails(numericCode)">
     <div class="country__flag" :style="flagURL">
     </div>
     <div class="country__details">
@@ -32,16 +32,6 @@
     name: 'Country',
 
     extends: useful,
-
-    methods: {
-      seeDetails () {
-        const { numericCode } = this;
-
-        this.$router.push({
-          path: `/country/${numericCode}`
-        });
-      }
-    },
 
     computed: {
       flagURL () {
