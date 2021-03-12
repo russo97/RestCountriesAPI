@@ -25,10 +25,16 @@ button,
   background-color: $white;
   padding: .625rem .9375rem;
   text-transform: uppercase;
+  transition: all .3s ease-in-out;
   box-shadow: 0 .0625rem .1875rem $veryLightGray;
 
   i {
     margin-right: 1rem;
+    transition: all .2s ease-in-out;
+  }
+
+  &:hover i {
+    transform: translateX(-5px);
   }
 }
 
