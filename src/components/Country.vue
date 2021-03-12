@@ -79,7 +79,7 @@
 
     &__flag {
       position: relative;
-      background-size: cover;
+      background-size: 110% 110%;
       background-position: center;
       background-repeat: no-repeat;
       background-image: var(--flag);
