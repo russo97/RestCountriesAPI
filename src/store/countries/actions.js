@@ -4,6 +4,7 @@ const toggleDarkTheme = ({ commit }) => {
 };
 
 const setCurrentRegion = ({ commit }, val) => {
+  commit('SET_USER_INPUT', '');
   commit('SET_CURRENT_REGION', val);
 };
 
@@ -17,7 +18,13 @@ const setCountryList = async ({ commit }) => {
   commit('SET_COUNTRY_LIST', await response);
 };
 
+const setUserInput = ({ commit }, val) => {
+  commit('SET_USER_INPUT', val);
+  commit('SET_CURRENT_REGION', '');
+};
+
 export default {
+  setUserInput,
   setCountryList,
   toggleDarkTheme,
   changeRouteMode,

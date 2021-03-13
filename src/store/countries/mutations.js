@@ -15,7 +15,12 @@ const SET_COUNTRY_LIST = (state, countriesArray) => {
   state.countryList = countriesArray;
 }
 
+const SET_USER_INPUT = (state, userInput) => {
+  state.userInput = userInput;
+}
+
 export default {
+  SET_USER_INPUT,
   TOGGLE_DARK_MODE,
   SET_COUNTRY_LIST,
   CHANGE_ROUTE_MODE,

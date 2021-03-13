@@ -2,7 +2,15 @@
   <div class="filterarea container" :class="{ dark: darkMode }">
     <div class="filterarea__search">
       <i class="fas fa-search"></i>
-      <input type="text" id="filter__search__input" autocomplete="off" list="countryDatalist" class="filterarea__search__input" placeholder="Search for a country..." />
+      <input
+        type="text"
+        autocomplete="off"
+        :value="userInput"
+        list="countryDatalist"
+        id="filter__search__input"
+        class="filterarea__search__input"
+        @input="setUserInput($event.target.value)"
+        placeholder="Search for a country..." />
     </div>
 
     <div class="filterarea__filter" :class="{ showRegions }" @click="showRegionsToggle">
@@ -26,7 +34,7 @@
       </div>
     </div>
 
-    <countries-datalist />
+    <countries-datalist v-if="false" />
   </div>
 </template>
 
@@ -50,6 +58,7 @@
       },
 
       ...mapActions('Countries', [
+        'setUserInput',
         'setCurrentRegion'
       ])
     },
@@ -57,6 +66,7 @@
     computed: {
       ...mapState('Countries', [
         'darkMode',
+        'userInput',
         'regionList',
         'currentRegion'
       ]),

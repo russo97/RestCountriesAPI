@@ -4,10 +4,10 @@
 
     <transition-group name="bounce" tag="div" class="countrieslist__container container">
       <country
-        :key="country.name"
         :name="country.name"
         :flag="country.flag"
         :region="country.region"
+        :key="country.alpha3Code"
         :capital="country.capital"
         :alpha3Code="country.alpha3Code"
         :population="country.population"
@@ -34,19 +34,30 @@
         const { currentRegion } = this;
 
         return !currentRegion.length || currentRegion.length && currentRegion === region.toLowerCase();
+      },
+
+      inputFilter (name) {
+        const { userInput } = this;
+
+        return !userInput.length || userInput.length && name.toLowerCase().indexOf(userInput.toLowerCase()) > -1;
       }
     },
 
     computed: {
       ...mapState('Countries', [
+        'userInput',
         'countryList',
         'currentRegion'
       ]),
 
       filteredCountryList () {
-        const { countryList, regionFilter } = this;
+        const { countryList, regionFilter, currentRegion, userInput, inputFilter } = this;
 
-        return countryList.filter(country => regionFilter(country.region));
+        return userInput.length
+          ? countryList.filter( country => inputFilter(country.name) )
+          : currentRegion.length
+            ? countryList.filter( country => regionFilter(country.region) )
+            : countryList;
       }
     }
   }
