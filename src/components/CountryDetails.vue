@@ -150,6 +150,7 @@
 
     color: $darkBlue;
     background-color: $white;
+    transition: all .3s ease-in-out;
 
     @include flex {
       align-items: center;
