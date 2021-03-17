@@ -89,11 +89,7 @@
     },
 
     watch: {
-      userInput () {
-        this.sizeLimit = this.increaseLimit;
-      },
-
-      currentRegion () {
+      filteredCountryList () {
         this.sizeLimit = this.increaseLimit;
       }
     }
