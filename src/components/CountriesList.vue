@@ -15,7 +15,7 @@
         v-for="country in paginateFilteredList" />
     </transition-group>
 
-    <load-more @clicked="loadMoreCountries" />
+    <load-more @clicked="loadMoreCountries" v-show="sizeLimit !== countryListLength" />
   </div>
 </template>
 
