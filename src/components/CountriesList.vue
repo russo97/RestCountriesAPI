@@ -12,8 +12,10 @@
         :alpha3Code="country.alpha3Code"
         :population="country.population"
         :numericCode="country.numericCode"
-        v-for="country in filteredCountryList" />
+        v-for="country in paginateFilteredList" />
     </transition-group>
+
+    <load-more @clicked="loadMoreCountries" />
   </div>
 </template>
 
@@ -21,11 +23,20 @@
   import { mapState } from 'vuex';
 
   import Country from './Country.vue';
+  import LoadMore from './LoadMore.vue';
   import FilterArea from './FilterArea.vue';
 
   export default {
+    data () {
+      return {
+        sizeLimit: 25,
+        increaseLimit: 25
+      }
+    },
+
     components: {
       Country,
+      LoadMore,
       FilterArea
     },
 
@@ -40,6 +51,12 @@
         const { userInput } = this;
 
         return !userInput.length || userInput.length && name.toLowerCase().indexOf(userInput.toLowerCase()) > -1;
+      },
+
+      loadMoreCountries () {
+        const { sizeLimit, countryListLength, increaseLimit } = this;
+
+        this.sizeLimit += sizeLimit < countryListLength ? increaseLimit : 0;
       }
     },
 
@@ -50,6 +67,10 @@
         'currentRegion'
       ]),
 
+      countryListLength () {
+        return this.countryList.length;
+      },
+
       filteredCountryList () {
         const { countryList, regionFilter, currentRegion, userInput, inputFilter } = this;
 
@@ -58,6 +79,12 @@
           : currentRegion.length
             ? countryList.filter( country => regionFilter(country.region) )
             : countryList;
+      },
+
+      paginateFilteredList () {
+        const { filteredCountryList, sizeLimit } = this;
+
+        return filteredCountryList.slice(0, sizeLimit);
       }
     }
   }
