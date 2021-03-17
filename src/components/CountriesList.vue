@@ -86,6 +86,16 @@
 
         return filteredCountryList.slice(0, sizeLimit);
       }
+    },
+
+    watch: {
+      userInput () {
+        this.sizeLimit = this.increaseLimit;
+      },
+
+      currentRegion () {
+        this.sizeLimit = this.increaseLimit;
+      }
     }
   }
 </script>
