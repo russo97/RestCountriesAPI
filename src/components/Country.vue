@@ -26,7 +26,6 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
   import useful from '../utils';
 
   export default {
@@ -37,11 +36,7 @@
     computed: {
       flagURL () {
         return this.flag;
-      },
-
-      ...mapGetters('Countries', [
-        'isDarkMode'
-      ])
+      }
     },
 
     props: ['name', 'population', 'region', 'capital', 'flag', 'numericCode', 'alpha3Code']

@@ -1,4 +1,6 @@
 
+import { mapGetters } from "vuex";
+
 export default {
   filters: {
     num (value) {
@@ -22,5 +24,11 @@ export default {
         `/country/${alpha3Code}`
       );
     }
+  },
+
+  computed: {
+    ...mapGetters('Countries', [
+      'isDarkMode'
+    ])
   }
 }

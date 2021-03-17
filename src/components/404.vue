@@ -10,17 +10,10 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
   import useful from '../utils';
 
   export default {
     name: 'NotFound',
-
-    computed: {
-      ...mapGetters('Countries', [
-        'isDarkMode'
-      ])
-    },
 
     extends: useful
   }

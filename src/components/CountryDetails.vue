@@ -107,7 +107,6 @@
 
     computed: {
       ...mapGetters('Countries', [
-        'isDarkMode',
         'getCountryByAlpha3Code'
       ]),
 
