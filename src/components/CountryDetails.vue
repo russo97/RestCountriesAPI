@@ -77,12 +77,12 @@
 
             <div class="countrydetails__container__details__bCountries__list">
               <button
-                :title="borderCountry.name"
-                :key="borderCountry.alpha3Code"
-                v-for="borderCountry in bordersCountries"
-                @click="seeCountryDetails(borderCountry.alpha3Code)"
+                :title="name"
+                :key="alpha3Code"
+                @click="seeCountryDetails(alpha3Code)"
+                v-for="{ name, alpha3Code } in bordersCountries"
                 class="countrydetails__container__details__bCountries__item">
-                {{ borderCountry.name }}
+                {{ name }}
               </button>
 
               <span v-if="countryDetails.borders.length === 0">
