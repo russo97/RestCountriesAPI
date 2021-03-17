@@ -118,8 +118,15 @@
       bordersCountries () {
         const { countryList, countryDetails } = this;
 
-        return countryList.filter(
-          country => countryDetails.borders.some( border => country.alpha3Code === border )
+        const allowed = ['name', 'alpha3Code'];
+
+        const filteredBorders = countryList.filter( country => countryDetails.borders.some( border => country.alpha3Code === border ) );
+
+        return filteredBorders.map(border => 
+          Object
+            .keys(border)
+            .filter(key => allowed.includes(key))
+            .reduce((obj, key) => Object.assign(obj, { [key]: border[key] }), {})
         );
       },
 
