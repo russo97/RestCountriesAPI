@@ -1,7 +1,7 @@
 <template>
   <div class="load container" :class="darkModeClass">
     <div class="load__container">
-      <button class="load__button">
+      <button class="load__button" @click="loadMoreCountries">
         Load more
       </button>
     </div>
@@ -13,6 +13,12 @@
 
   export default {
     name: "LoadMore",
+
+    methods: {
+      loadMoreCountries () {
+        this.$emit('clicked');
+      }
+    },
 
     computed: {
       ...mapState('Countries', [
