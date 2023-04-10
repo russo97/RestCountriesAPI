@@ -13,9 +13,11 @@ const changeRouteMode = ({ commit }, val) => {
 };
 
 const setCountryList = async ({ commit }) => {
-  const response = (await fetch('https://restcountries.eu/rest/v2/all')).json();
+  const response = await fetch('https://restcountries.eu/v3.1/all');
 
-  commit('SET_COUNTRY_LIST', await response);
+  const data = await response.json();
+
+  commit('SET_COUNTRY_LIST', data);
 };
 
 const setUserInput = ({ commit }, val) => {
